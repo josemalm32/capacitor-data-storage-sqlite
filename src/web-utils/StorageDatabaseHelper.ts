@@ -1,5 +1,5 @@
 //import LocalForage from 'jeep-localforage';
-import localForage from 'localforage';
+import localForage from 'localspace';
 
 import type { capDataStorageOptions, JsonStore, JsonTable } from '../definitions';
 

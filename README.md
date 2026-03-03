@@ -89,7 +89,7 @@ npx cap sync
 
 - On Web, 
 ```bash
-npm install --save localforage
+npm install --save localspace
 ```
 
 - On Electron
@@ -190,7 +190,7 @@ No configuration required for this plugin
 The IOS & Android code use SQLCipher allowing for database encryption. 
 The Android code is now based on `androidx.sqlite`. The database is not closed anymore after each transaction for performance improvement.
 You must manage the `close` of the database before opening a new database.
-The Web code use `localforage` package to store the datastore in the Browser.
+The Web code use `localspace` package to store the datastore in the Browser.
 The Electron code use `sqlite3`package
 
 ## Contributors ✨

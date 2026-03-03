@@ -52,7 +52,7 @@
     "check:wiring": "node scripts/check-capacitor-plugin-wiring.mjs"
   },
   "dependencies": {
-    "localforage": "^1.10.0"
+    "localspace": "^1.1.1"
   },
   "devDependencies": {
     "@capacitor/android": "^8.0.0",
@@ -77,7 +77,7 @@
   },
   "peerDependencies": {
     "@capacitor/core": ">=8.0.0",
-    "localforage": "^1.10.0"
+    "localspace": "^1.1.1"
   },
   "eslintConfig": {
     "extends": "@ionic/eslint-config/recommended"
