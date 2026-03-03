@@ -1,6 +1,7 @@
 package com.jeep.plugin.capacitor.capgocapacitordatastoragesqlite.cdssUtils;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.util.Log;
 import androidx.sqlite.db.SimpleSQLiteQuery;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -13,8 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import net.sqlcipher.Cursor;
-import net.sqlcipher.database.SQLiteDatabase;
+import net.zetetic.database.sqlcipher.SQLiteDatabase;
 
 public class StorageDatabaseHelper {
 
@@ -63,7 +63,7 @@ public class StorageDatabaseHelper {
      */
     private void InitializeSQLCipher() {
         Log.d(TAG, " in InitializeSQLCipher: ");
-        SQLiteDatabase.loadLibs(_context);
+        UtilsSQLCipher.loadSQLCipher();
     }
 
     /**

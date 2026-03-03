@@ -1,16 +1,17 @@
 package com.jeep.plugin.capacitor.capgocapacitordatastoragesqlite.cdssUtils;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import net.sqlcipher.database.SQLiteDatabase;
-import net.sqlcipher.database.SQLiteException;
-import net.sqlcipher.database.SQLiteStatement;
+import net.zetetic.database.sqlcipher.SQLiteDatabase;
+import net.zetetic.database.sqlcipher.SQLiteStatement;
 
 public class UtilsSQLCipher {
 
     private static final String TAG = UtilsSQLCipher.class.getName();
+    private static boolean sqlCipherLoaded = false;
 
     /**
      * The detected state of the database, based on whether we can
@@ -72,7 +73,7 @@ public class UtilsSQLCipher {
      * @throws IOException
      */
     public void encrypt(Context ctxt, File originalFile, byte[] passphrase) throws IOException {
-        SQLiteDatabase.loadLibs(ctxt);
+        loadSQLCipher();
 
         if (originalFile.exists()) {
             File newFile = File.createTempFile("sqlcipherutils", "tmp", ctxt.getCacheDir());
@@ -104,7 +105,7 @@ public class UtilsSQLCipher {
     }
 
     public void changePassword(Context ctxt, File file, String password, String nwpassword) throws IOException {
-        SQLiteDatabase.loadLibs(ctxt);
+        loadSQLCipher();
 
         if (file.exists()) {
             SQLiteDatabase db = SQLiteDatabase.openDatabase(file.getAbsolutePath(), password, null, SQLiteDatabase.OPEN_READWRITE);
@@ -116,6 +117,13 @@ public class UtilsSQLCipher {
             db.close();
         } else {
             throw new FileNotFoundException(file.getAbsolutePath() + " not found");
+        }
+    }
+
+    public static synchronized void loadSQLCipher() {
+        if (!sqlCipherLoaded) {
+            System.loadLibrary("sqlcipher");
+            sqlCipherLoaded = true;
         }
     }
 }
