@@ -7,7 +7,7 @@ export default {
       name: 'capacitorCapgoCapacitorDataStorageSqlite',
       globals: {
         '@capacitor/core': 'capacitorExports',
-        localspace: 'localspace',
+        localspace: 'Localspace',
       },
       sourcemap: true,
       inlineDynamicImports: true,
