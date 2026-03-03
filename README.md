@@ -89,7 +89,7 @@ npx cap sync
 
 - On Web, 
 ```bash
-npm install --save localforage
+npm install --save localspace
 ```
 
 - On Electron
@@ -123,6 +123,12 @@ ionic serve
 ## Configuration
 
 No configuration required for this plugin
+
+## Singleton behavior
+
+- The Capacitor plugin object is reused as a single instance at runtime.
+- The plugin keeps one active store handle (`mDb`) per runtime instance, both on mobile (iOS/Android) and Web.
+- You can create multiple databases/tables over time, but only one is the current active one for operations until you open/switch again.
 
 ## Supported methods
 
@@ -190,7 +196,7 @@ No configuration required for this plugin
 The IOS & Android code use SQLCipher allowing for database encryption. 
 The Android code is now based on `androidx.sqlite`. The database is not closed anymore after each transaction for performance improvement.
 You must manage the `close` of the database before opening a new database.
-The Web code use `localforage` package to store the datastore in the Browser.
+The Web code use `localspace` package to store the datastore in the Browser.
 The Electron code use `sqlite3`package
 
 ## Contributors ✨

@@ -1,5 +1,5 @@
 //import LocalForage from 'jeep-localforage';
-import localForage from 'localforage';
+import localspace from 'localspace';
 
 import type { capDataStorageOptions, JsonStore, JsonTable } from '../definitions';
 
@@ -26,7 +26,7 @@ export class StorageDatabaseHelper {
   openStore(dbName: string, tableName: string): boolean {
     let ret = false;
     const config: any = this.setConfig(dbName, tableName);
-    this._db = localForage.createInstance(config);
+    this._db = localspace.createInstance(config);
     if (this._db != null) {
       this._dbName = dbName;
       ret = true;
@@ -37,7 +37,7 @@ export class StorageDatabaseHelper {
     const config: any = {
       name: dbName,
       storeName: tableName,
-      driver: [localForage.INDEXEDDB, localForage.WEBSQL],
+      driver: [localspace.INDEXEDDB, localspace.LOCALSTORAGE],
       version: 1,
     };
     return config;
