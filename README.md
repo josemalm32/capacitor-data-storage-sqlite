@@ -124,6 +124,12 @@ ionic serve
 
 No configuration required for this plugin
 
+## Singleton behavior
+
+- The Capacitor plugin object is reused as a single instance at runtime.
+- The plugin keeps one active store handle (`mDb`) per runtime instance, both on mobile (iOS/Android) and Web.
+- You can create multiple databases/tables over time, but only one is the current active one for operations until you open/switch again.
+
 ## Supported methods
 
 | Name                         | Android | iOS | Electron | Web |
