@@ -37,7 +37,7 @@ export class StorageDatabaseHelper {
     const config: any = {
       name: dbName,
       storeName: tableName,
-      driver: [localForage.INDEXEDDB, localForage.WEBSQL],
+      driver: [localForage.INDEXEDDB, localForage.LOCALSTORAGE],
       version: 1,
     };
     return config;
